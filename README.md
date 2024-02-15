@@ -14,55 +14,61 @@ Use the flowise-railway template (https://railway.app/template/pn4G8S) if you do
 - Flowise and Postgres have to be deployed to the same environment in order to leverage the benefits of private networking on Railway.
 - `flowise` database was already created in Postgres
 
+----
+
 ## 💁‍♂️ Usage
 
-### Deploy using Deploy on Railway button
-1. Click the Deploy on Railway button
-2. Change to your preferred repository name
-3. **(Important)** Configure the database related environment variables which to point to your current Postgis database.
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/A7Dwg9?referralCode=OYCuBb)
 
-- `DATABASE_HOST` (Private/Public network database host, private host is preferred. i.e. `postgre.railway.internal`)
+### 🚀 Quick start
 
-- `DATABASE_NAME` (Database name. i.e. `flowise`)
-
-- `DATABASE_PASSWORD` (Database user password)
-
-- `DATABASE_PORT` (Database private/public network port, private port is preferred. i.e. `5432`)
-
-- `DATABASE_USER` (Database user - A database user that allow you CRUD the flowise database)
-
-4. Click Deploy
-
-5. Let railway deploy your service, most of the configurations are preset, but feel free to tweak them as you like before deployment.
-
-
-### Deploy through the Railway template page on Railway
 1. Click Deploy Now
 
 2. Change to your preferred repository name
 
-3. **(Important)** Configure the database related environment variables which to point to your current Postgis database.
+3. Click Configure and click Save Config for both services.
 
-- `DATABASE_HOST` (Internal network database host. i.e. `postgre.railway.internal`)
+4. Click Deploy.
+
+5. Let Railway deploy all the services for you.
+
+6. Once the process is successful, you will be able to view a deployed URL.
+
+
+### 💡 What if I would like to use my current Postgres/PostGIS database server?
+
+1. Click Deploy Now
+
+2. Change to your preferred repository name
+
+3. **(Important)** Configure the database-related environment variables to point to your current PostGIS database.
+
+- `DATABASE_HOST` (Private or public network database host. i.e. `postgre.railway.internal`)
 
 - `DATABASE_NAME` (Database name. i.e. `flowise`)
 
 - `DATABASE_PASSWORD` (Database user password)
 
-- `DATABASE_PORT` (Database private network port. i.e. `5432`)
+- `DATABASE_PORT` (Database private or public network port. i.e. `5432`)
 
-- `DATABASE_USER` (Database user - A database user that allow you CRUD the flowise database)
+- `DATABASE_USER` (Database user - A database user that allows you CRUD the flowise database)
 
 4. Click Deploy
 
-5. Let railway deploy your service, most of the configurations are preset, but feel free to tweak them as you like before deployment.
+5. Let Railway deploy all the services for you.
 
+6. Once the process is successful, you will be able to view a deployed URL.
 
-If succeeds, you should be able to see a deployed URL
+7. Delete the PostGIS database service that comes with this template if no longer needed.
 
 ## 💁‍♀️ Example screenshots
 
+![Flowise AI login screen!](https://zyugzloemocjcxmspsso.supabase.co/storage/v1/object/public/static-assets/flowise-login-screen.png "Flowise AI login screen")
 
+
+![Flowise AI version screen!](https://zyugzloemocjcxmspsso.supabase.co/storage/v1/object/public/static-assets/flowise-version-screen.png "Flowise AI version screen")
+
+![Flowise database!](https://zyugzloemocjcxmspsso.supabase.co/storage/v1/object/public/static-assets/flowise-database.jpg "Flowise database")
 
 
 
