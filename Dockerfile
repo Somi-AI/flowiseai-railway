@@ -2,7 +2,7 @@
 FROM node:20-alpine AS build
 
 USER root
-
+RUN apk add --no-cache python3 make g++ build-base
 # Skip downloading Chrome for Puppeteer (saves build time)
 ENV PUPPETEER_SKIP_DOWNLOAD=true
 
