@@ -1,22 +1,43 @@
 # Stage 1: Build stage
-FROM node:20-alpine AS build
+# Node 22+ required (utilium and current Flowise deps); Alpine needs
+# python/make/g++ so better-sqlite3 can compile (no musl prebuilds).
+FROM node:22-alpine AS build
 
 USER root
 
-# Skip downloading Chrome for Puppeteer (saves build time)
 ENV PUPPETEER_SKIP_DOWNLOAD=true
+ENV NODE_OPTIONS=--max-old-space-size=4096
 
-# Install latest Flowise globally (specific version can be set: flowise@1.0.0)
+RUN apk add --no-cache \
+    python3 \
+    make \
+    g++ \
+    build-base \
+    libc6-compat
+
+# Install latest Flowise globally (pin with flowise@x.y.z if needed)
 RUN npm install -g flowise
 
 # Stage 2: Runtime stage
-FROM node:20-alpine
+FROM node:22-alpine
 
-# Install runtime dependencies including PostgreSQL client for database initialization
-RUN apk add --no-cache chromium git python3 py3-pip make g++ build-base cairo-dev pango-dev curl postgresql-client
+RUN apk add --no-cache \
+    chromium \
+    git \
+    python3 \
+    py3-pip \
+    make \
+    g++ \
+    build-base \
+    cairo-dev \
+    pango-dev \
+    curl \
+    postgresql-client \
+    libc6-compat
 
 # Set the environment variable for Puppeteer to find Chromium
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+ENV NODE_OPTIONS=--max-old-space-size=4096
 
 # Copy Flowise from the build stage
 COPY --from=build /usr/local/lib/node_modules /usr/local/lib/node_modules
