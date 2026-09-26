@@ -1,6 +1,8 @@
 # Use the official Flowise image to avoid broken npm global installs
 # (missing nested deps like turndown) and Alpine native-compile failures.
-FROM flowiseai/flowise:latest
+# Pinned: `latest` drifts from the release tags and can be served stale from
+# the build cache. Bump this tag to upgrade Flowise.
+FROM flowiseai/flowise:3.1.4
 
 USER root
 
